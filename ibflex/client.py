@@ -65,7 +65,7 @@ class BadResponseError(IbflexClientError):
     def __init__(self, response: requests.Response):
         self.response = response
         super(BadResponseError, self).__init__(response.content)
-        
+
 
 class StatementGenerationTimeout(IbflexClientError):
     """ Exception raised when the Flex server says it is generating the response,
@@ -137,7 +137,7 @@ def request_statement(
     """
     url = url or REQUEST_URL
     ### AKE FIX
-    url = 'https://ndcdyn.interactivebrokers.com/portal.flexweb/api/v1/flexQuery'
+    # url = 'https://ndcdyn.interactivebrokers.com/portal.flexweb/api/v1/flexQuery'
     response = submit_request(url, token, query=query_id)
     stmt_access = parse_stmt_response(response)
     if isinstance(stmt_access, StatementError):
